@@ -36,6 +36,7 @@ public class User {
     private UserStatus userStatus;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private String notes;
 
     @PrePersist
     protected void onCreate(){
