@@ -6,6 +6,7 @@ import com.rabin.backend.dto.response.UserResponseDTO;
 import com.rabin.backend.enums.UserStatus;
 import com.rabin.backend.model.User;
 import com.rabin.backend.repo.UserRepository;
+import com.rabin.backend.security.JwtUtil;
 import com.rabin.backend.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -72,10 +73,11 @@ public class UserService {
     }
 
     private UserResponseDTO mapToResponse(User user){
+        String token = JwtUtil.generateToken(user.getId());
         UserResponseDTO dto = new UserResponseDTO();
-        dto.setId(user.getId());
         dto.setFullName(user.getFullName());
         dto.setEmail(user.getEmail());
+        dto.setToken(token);
         dto.setProfileImageUrl(user.getProfileImageUrl());
         dto.setUserStatus(user.getUserStatus());
         dto.setCreatedAt(user.getCreatedAt());

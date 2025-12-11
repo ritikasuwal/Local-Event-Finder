@@ -11,11 +11,11 @@ import java.time.LocalDateTime;
 @Setter
 public class UserResponseDTO {
 
-    private Long id;
-
     private String fullName;
 
     private String email;
+
+    private String token;
 
     private String profileImageUrl;
 

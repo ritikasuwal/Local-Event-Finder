@@ -70,7 +70,7 @@ public class UserController {
         GenericApiResponse<UserResponseDTO> response = new GenericApiResponse<>(
                 true,
                 "User registered successfully",
-                userResponse,
+                null,
                 HttpStatus.CREATED.value()
         );
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -79,6 +79,14 @@ public class UserController {
     @Operation(
             summary = "User login",
             description = "Authenticate a user using email and password",
+            requestBody = @RequestBody(
+                    description = "Login credentials",
+                    required = true,
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserLoginDTO.class)
+                    )
+            ),
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -105,7 +113,7 @@ public class UserController {
             }
     )
     @PostMapping("/login")
-    public ResponseEntity<GenericApiResponse<UserResponseDTO>> login(@Valid @RequestBody UserLoginDTO loginInfo) {
+    public ResponseEntity<GenericApiResponse<UserResponseDTO>> login(@Valid @org.springframework.web.bind.annotation.RequestBody UserLoginDTO loginInfo) {
         UserResponseDTO userResponse = userService.loginUser(loginInfo);
         GenericApiResponse<UserResponseDTO> response = new GenericApiResponse<>(
                 true,

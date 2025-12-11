@@ -2,9 +2,11 @@
 
     import com.rabin.backend.dto.response.EventResponseDTO;
     import com.rabin.backend.dto.response.GenericApiResponse;
+    import com.rabin.backend.security.JwtFilter;
     import com.rabin.backend.service.RecommendationService;
     import io.swagger.v3.oas.annotations.Operation;
     import io.swagger.v3.oas.annotations.tags.Tag;
+    import jakarta.servlet.http.HttpServletRequest;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.http.HttpStatus;
     import org.springframework.http.ResponseEntity;
@@ -30,11 +32,17 @@
 
         @GetMapping("/recommendations")
         public ResponseEntity<GenericApiResponse<List<EventResponseDTO>>> getRecommendations(
-                @RequestParam Long userId,
+                HttpServletRequest request,
                 @RequestParam double latitude,
                 @RequestParam double longitude,
                 @RequestParam(defaultValue = "10") int limit){
 
+            Long userId = (Long) request.getAttribute(JwtFilter.USER_ID_ATTR);
+
+            if(userId==null){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(new GenericApiResponse<>(false,"Unauthorized",null,HttpStatus.UNAUTHORIZED.value()));
+            }
             List<EventResponseDTO> events = recommendationService.getRecommendedEvents(userId,latitude,longitude,limit);
             GenericApiResponse<List<EventResponseDTO>> response  = new GenericApiResponse<>(
                     true,
