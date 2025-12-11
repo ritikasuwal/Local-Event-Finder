@@ -1,4 +1,4 @@
-package com.rabin.backend.Enums;
+package com.rabin.backend.enums;
 
 public enum UserStatus {
     ACTIVE,
