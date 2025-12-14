@@ -1,0 +1,87 @@
+.navbar {
+  display: flex;
+  height: 137px;
+  width: 1440px;
+}
+
+.navbar .searchbar {
+  height: 49px;
+  margin-left: 271px;
+  margin-top: 56px;
+  position: relative;
+  width: 594px;
+}
+
+.navbar .rectangle {
+  background-color: #5c5c5c80;
+  border-radius: 22px;
+  box-shadow: 4px 4px 4px #00000054;
+  height: 49px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 590px;
+}
+
+.navbar .search-events {
+  color: #d7d7d7;
+  font-family: "Poppins", Helvetica;
+  font-size: 16px;
+  font-weight: 700;
+  left: 18px;
+  letter-spacing: 0.80px;
+  line-height: 35px;
+  position: absolute;
+  top: 8px;
+  white-space: nowrap;
+  width: 195px;
+}
+
+.navbar .ellipse {
+  background-color: #ffffff;
+  border-radius: 15px;
+  height: 30px;
+  left: 545px;
+  position: absolute;
+  top: 9px;
+  width: 30px;
+}
+
+.navbar .search {
+  height: 17px;
+  left: 553px;
+  position: absolute;
+  top: 15px;
+  width: 15px;
+}
+
+.navbar .line {
+  height: 33px;
+  left: 272px;
+  object-fit: cover;
+  position: absolute;
+  top: 10px;
+  width: 1px;
+}
+
+.navbar .kathmandu-NP {
+  color: #070707;
+  font-family: "Poppins", Helvetica;
+  font-size: 16px;
+  font-weight: 700;
+  left: 307px;
+  letter-spacing: 0.80px;
+  line-height: 35px;
+  position: absolute;
+  top: 8px;
+  white-space: nowrap;
+  width: 141px;
+}
+
+.navbar .multiply {
+  height: 17px;
+  left: 511px;
+  position: absolute;
+  top: 16px;
+  width: 17px;
+}
